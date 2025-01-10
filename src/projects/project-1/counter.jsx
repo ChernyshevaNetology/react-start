@@ -11,8 +11,9 @@ export const Counter = () => {
     return (
         <>
             <div>
+
                 <Button title={"increment"} onClick={onIncrement}/>
-                <Button title={"decrement"} onClick={onDecrement}/>
+                <Button disabled={count < 0} title={"decrement"} onClick={onDecrement}/>
                 <Button title={"reset"} onClick={onReset}/>
             </div>
             <h3>{count}</h3>
