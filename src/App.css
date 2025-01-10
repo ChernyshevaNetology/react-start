@@ -67,3 +67,10 @@
   height: 100px;
   width: 200px;
 }
+
+.count {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  background: grey;
+}
