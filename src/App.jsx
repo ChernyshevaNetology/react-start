@@ -1,11 +1,12 @@
 import './App.css'
-import { MultipleCounters } from './projects/project-2/multiple-counters'
+import { Counter } from './projects/project-1/counter'
+
 
 
 export const App = () => {
     return (
     <div className={'container'}>
-      <MultipleCounters />
+      <Counter />
     </div>
   )
 }

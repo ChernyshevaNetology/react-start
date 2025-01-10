@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SingleCounter } from './single-counter';
 
 const data = [
     {id: 1, value: 0},
@@ -37,14 +38,7 @@ export const MultipleCounters = () => {
     return (
         <div>
             {
-                counters.map(counter => <div className={'counters-container'} key={counter.id}>
-                    <button className={'btn'} onClick={() => onIncrement(counter.id)}>Increment</button>
-                    <button className={'btn'}>Decrement</button>
-                    <button className={'btn btn_red'}>Reset</button>
-                    <div className="val-cont">
-                        <span className={'counter-value'}>{counter.value}</span>
-                    </div>
-                </div>)
+                counters.map(counter => <SingleCounter count={counter.value} onclick={() => onIncrement(counter.id)}/>)
             }
         </div>
     );
