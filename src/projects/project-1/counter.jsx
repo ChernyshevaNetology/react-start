@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Button } from '../../components/button';
+import { Notice } from '../../components/notice';
 
 export const Counter = () => {
     const [count, setCount] = useState(0);
@@ -7,6 +8,7 @@ export const Counter = () => {
     const onIncrement = () => setCount((prev) => prev + 1);
     const onDecrement = () => setCount((prev) => prev - 1);
     const onReset = () => setCount( 0);
+
 
     return (
         <>
@@ -18,6 +20,9 @@ export const Counter = () => {
             </div>
             <div className="count">
                 <h3>{count}</h3>
+            </div>
+            <div>
+                <Notice warning={(count >= 15) ? 'Счетчик не может превышать 15' : null} />
             </div>
 
         </>
