@@ -19,7 +19,13 @@ export const Counter = () => {
                 <Button disabled={count === 0} title={"reset"} onClick={onReset}/>
             </div>
             <div className="count">
-                <h3>{count}</h3>
+                <h3 className={
+                    (count > 1 && count < 10) ? "grey" :
+                        (count > 10 && count < 15) ? "green" :
+                            (count > 15) ? "red" : null
+                }>
+                    {count}
+                </h3>
             </div>
             <div>
                 <Notice warning={(count >= 15) ? 'Счетчик не может превышать 15' : null} />
