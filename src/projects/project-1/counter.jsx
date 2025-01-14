@@ -16,7 +16,10 @@ export const Counter = () => {
                 <Button disabled={count <= 0} title={"decrement"} onClick={onDecrement}/>
                 <Button disabled={count === 0} title={"reset"} onClick={onReset}/>
             </div>
-            <h3>{count}</h3>
+            <div className="count">
+                <h3>{count}</h3>
+            </div>
+
         </>
     );
 };
