@@ -8,21 +8,22 @@ export const Counter = () => {
     const onIncrement = () => setCount((prev) => prev + 1);
     const onDecrement = () => setCount((prev) => prev - 1);
     const onReset = () => setCount( 0);
-
+    const limiter = () => {
+        if (count > 1 && count < 10) return "grey";
+        if (count > 10 && count <= 15) return "green";
+        if (count > 15) return "red";
+    }
 
     return (
         <>
             <div>
 
-                <Button title={"increment"} onClick={onIncrement}/>
-                <Button disabled={count <= 0} title={"decrement"} onClick={onDecrement}/>
-                <Button disabled={count === 0} title={"reset"} onClick={onReset}/>
+                <Button title={"increment"} handler={onIncrement}/>
+                <Button blocked={count <= 0} title={"decrement"} handler={onDecrement}/>
+                <Button blocked={count === 0} title={"reset"} handler={onReset}/>
             </div>
             <div className="count">
-                <h3 className={
-                    (count > 1 && count < 10) ? "grey" :
-                        (count > 10 && count < 15) ? "green" :
-                            (count > 15) ? "red" : null
+                <h3 className={limiter(count)
                 }>
                     {count}
                 </h3>

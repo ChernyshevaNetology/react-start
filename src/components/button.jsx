@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const Button = ({ title, disabled, onClick, color}) => {
+export const Button = ({color, title, blocked, handler}) => {
     return (
         <div>
-            <button className={color} disabled={disabled} onClick={onClick}>{title}</button>
+            <button className={color} disabled={blocked} onClick={handler}>{title}</button>
         </div>
     );
 };
