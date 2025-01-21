@@ -8,17 +8,14 @@ const data = [
     {id: 4, value: 0},
     {id: 5, value: 0},
 ]
-
 // single-counter.jsx
 // SingleCounter
-
-
 export const MultipleCounters = () => {
     const [counters, setCounters] = useState(data);
 
     const onIncrement = (id) => {
-        console.log(counters)
-        console.log('id', id);
+        //console.log(counters)
+        //console.log('id', id);
         const updatedCounters = counters.map((counter) => {
             if (counter.id === id) {
                 return {
@@ -30,15 +27,37 @@ export const MultipleCounters = () => {
         })
         setCounters(updatedCounters);
     }
+    const onDecrement = (id) => {
+        const updatedCounters = counters.map((counter) => {
+            if (counter.id === id) {
+                return {
+                    ...counter,
+                    value: --counter.value,
+                }
+            }
+            return counter;
+        })
+        setCounters(updatedCounters);
+    }
 
-    const onDecrement = () => {}
+    const onReset = () => {
+        const updatedCounters = counters.map((counter) => {
+            if (counter.id === id) {
+                return {
+                    ...counter,
+                    value: 0,
+                }
+            }
+            return counter;
+        })
+        setCounters(updatedCounters);
+    }
 
-    const onReset = () => {}
 
     return (
         <div>
             {
-                counters.map(counter => <SingleCounter count={counter.value} onclick={() => onIncrement(counter.id)}/>)
+                counters.map(counter => <SingleCounter count={counter.value} onClick={() => handler(counter.id)} id={counter.id}/>)
             }
         </div>
     );

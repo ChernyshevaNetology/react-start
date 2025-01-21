@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const Theme = ({name, description, link, image}) => {
+export const Theme = ({title, description, link, image}) => {
     return (
         <div className={'theme'}>
-            <h2>{name}</h2>
+            <h2>{title}</h2>
             <p>{description}</p>
             <a href={link}>Смотреть тему</a>
             <img src={image} />

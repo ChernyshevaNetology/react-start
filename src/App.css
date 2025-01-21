@@ -58,16 +58,11 @@
   border-radius: 3px;
 }
 
-
-.grey {
-  background-color: grey;
-}
-
-.green {
+.count .green {
   background-color: green;
 }
 
-.red {
+.count .red {
   background-color: red;
 }
 

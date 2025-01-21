@@ -9,8 +9,8 @@ export const Counter = () => {
     const onDecrement = () => setCount((prev) => prev - 1);
     const onReset = () => setCount( 0);
     const limiter = () => {
-        if (count > 1 && count < 10) return "grey";
-        if (count > 10 && count <= 15) return "green";
+        if (count > 1 && count < 5) return "grey";
+        if (count >= 6 && count <= 15) return "green";
         if (count > 15) return "red";
     }
 
@@ -23,8 +23,7 @@ export const Counter = () => {
                 <Button blocked={count === 0} title={"reset"} handler={onReset}/>
             </div>
             <div className="count">
-                <h3 className={limiter(count)
-                }>
+                <h3 className={limiter(count)}>
                     {count}
                 </h3>
             </div>

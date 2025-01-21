@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const SingleCounter = ({count, onIncrement}) => {
+export const SingleCounter = ({count, handler, id}) => {
     return(
     <>
     <div className={'counters-container'}>
-        <button className={'btn'} onClick={() => onIncrement(counter.id)}>Increment</button>
-        <button className={'btn'} onClick={onIncrement}>Decrement</button>
-        <button className={'btn'} onClick={onIncrement}>Reset</button>
+        <button className={'btn'} count={count} onClick={() => {handler(id)}}>Increment</button>
+        <button className={'btn'} count={count} onClick={() => {handler(id)}}>Decrement</button>
+        <button className={'btn'} count={count} onClick={() => {handler(id)}}>Reset</button>
         <h3>{count}</h3>
     </div>
         </>
