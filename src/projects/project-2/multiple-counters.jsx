@@ -40,7 +40,7 @@ export const MultipleCounters = () => {
         setCounters(updatedCounters);
     }
 
-    const onReset = () => {
+    const onReset = (id) => {
         const updatedCounters = counters.map((counter) => {
             if (counter.id === id) {
                 return {
@@ -53,11 +53,10 @@ export const MultipleCounters = () => {
         setCounters(updatedCounters);
     }
 
-
     return (
         <div>
             {
-                counters.map(counter => <SingleCounter count={counter.value} onClick={() => handler(counter.id)} id={counter.id}/>)
+                counters.map((counter) => <SingleCounter id={counter.id} onIncrement={onIncrement} onDecrement={onDecrement} onReset={onReset} count={counter.value}/>)
             }
         </div>
     );
