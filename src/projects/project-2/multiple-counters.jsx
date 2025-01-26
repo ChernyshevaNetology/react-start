@@ -53,8 +53,6 @@ export const MultipleCounters = () => {
         setCounters(updatedCounters);
     }
 
-    // onMasterReset => все счетчики сбрасываются на 0
-
     return (
         <div>
             {

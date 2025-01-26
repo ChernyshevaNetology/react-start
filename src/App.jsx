@@ -1,10 +1,11 @@
 import './App.css'
-import { Counter  } from "./projects/project-1/counter.jsx";
+import { MultipleThemeRender } from './projects/project-example/multiple-theme-render'
+import { MultipleCounters } from "./projects/project-2/multiple-counters";
 
 export const App = () => {
     return (
     <div className={'container'}>
-        <Counter />
+        <MultipleCounters />
     </div>
   )
 }
