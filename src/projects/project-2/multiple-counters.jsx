@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { SingleCounter } from './single-counter';
+import {Flex, Switch, Stack, Divider, Button} from '@mantine/core';
 
 const data = [
     {id: 1, value: 0},
     {id: 2, value: 3},
     {id: 3, value: 4},
     {id: 4, value: 0},
-    {id: 5, value: 0},
+    {id: 5, value: 1},
 ]
-// single-counter.jsx
-// SingleCounter
+
 export const MultipleCounters = () => {
     const [counters, setCounters] = useState(data);
+    const [checked, setChecked] = useState(false);
 
     const onIncrement = (id) => {
-        //console.log(counters)
-        //console.log('id', id);
         const updatedCounters = counters.map((counter) => {
             if (counter.id === id) {
                 return {
@@ -53,11 +52,47 @@ export const MultipleCounters = () => {
         setCounters(updatedCounters);
     }
 
+    const handleSwitchState = () => setChecked(!checked);
+
     return (
-        <div>
-            {
-                counters.map((counter) => <SingleCounter id={counter.id} onIncrement={onIncrement} onDecrement={onDecrement} onReset={onReset} count={counter.value}/>)
+        <>
+            <Flex
+                mih={50}
+                gap="md"
+                justify="center"
+                align="center"
+                direction="row"
+                wrap="wrap"
+            >
+                <Switch onChange={handleSwitchState} label="Активировать счетчики"/>
+            </Flex>
+            <Divider my="md" />
+            {checked ? (<Stack
+                mih={50}
+                gap="md"
+                justify="center"
+                align="center"
+                direction="row"
+                wrap="wrap"
+            >
+                {
+                    counters.map((counter) => <SingleCounter id={counter.id} onIncrement={onIncrement}
+                                                             onDecrement={onDecrement} onReset={onReset}
+                                                             count={counter.value}/>)
+                }
+            </Stack>) : null
             }
-        </div>
+                <Stack
+                mih={50}
+                gap="md"
+                justify="center"
+                align="center"
+                direction="row"
+                wrap="wrap"
+            >
+                <Button>MasterReset</Button>
+            </Stack>
+
+        </>
     );
-};
+}
