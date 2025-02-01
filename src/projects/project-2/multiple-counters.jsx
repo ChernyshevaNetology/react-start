@@ -52,6 +52,16 @@ export const MultipleCounters = () => {
         setCounters(updatedCounters);
     }
 
+    const onMasterReset = (id) => {
+        const updatedCounters = counters.map((counter) => {
+                return {
+                    ...counter,
+                    value: 0,
+                }
+           })
+        setCounters(updatedCounters);
+    }
+
     const handleSwitchState = () => setChecked(!checked);
 
     return (
@@ -80,19 +90,9 @@ export const MultipleCounters = () => {
                                                              onDecrement={onDecrement} onReset={onReset}
                                                              count={counter.value}/>)
                 }
-            </Stack>) : null
+                    <Button onClick={onMasterReset}>MasterReset</Button>
+                </Stack>) : null
             }
-                <Stack
-                mih={50}
-                gap="md"
-                justify="center"
-                align="center"
-                direction="row"
-                wrap="wrap"
-            >
-                <Button>MasterReset</Button>
-            </Stack>
-
         </>
     );
 }
