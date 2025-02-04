@@ -94,8 +94,8 @@ export const MultipleCounters = () => {
         >
           Вы действительно сбросить счетчики?
           <Group mt="lg" justify="flex-end">
-            <Button>Отменить</Button>
-            <Button>Сбросить на 0</Button>
+            <Button variant="default">Отменить</Button>
+            <Button color="red">Сбросить на 0</Button>
           </Group>
         </Modal>
       {checked ? (
