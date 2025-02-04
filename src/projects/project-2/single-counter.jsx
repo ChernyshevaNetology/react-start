@@ -18,11 +18,6 @@ export const SingleCounter = ({
   onReset,
   id,
 }) => {
-  const stack = useModalsStack([
-    "delete-page",
-    "confirm-action",
-    "really-confirm-action",
-  ]);
   return (
     <Flex
       mih={50}
@@ -56,29 +51,11 @@ export const SingleCounter = ({
       >
         Reset
       </Button>
-      <Modal.Stack>
-        <Modal {...stack.register("confirm-action")} title="Delete button">
-          Are you sure you want to perform this action? This action cannot be
-          undone. If you are sure, press confirm button below.
-          <Group mt="lg" justify="flex-end">
-            <Button onClick={stack.closeAll} variant="default">
-              Cancel
-            </Button>
-            <Button
-              onClick={() => stack.open("really-confirm-action")}
-              color="red"
-            >
-              Confirm
-            </Button>
-          </Group>
-        </Modal>
-      </Modal.Stack>
       <Button
         variant="filled"
         color="orange"
-        onClick={() => stack.open("delete-page")}
       >
-        Trash bin
+        Удалить счетчик
       </Button>
       <Badge size="xl" circle>
         {count}

@@ -6,10 +6,10 @@ import {
   Stack,
   Divider,
   Button,
-  Group,
   Modal,
-  useModalsStack,
+  Group,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 
 const data = [
   { id: 1, value: 0 },
@@ -22,6 +22,7 @@ const data = [
 export const MultipleCounters = () => {
   const [counters, setCounters] = useState(data);
   const [checked, setChecked] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
 
   const onIncrement = (id) => {
     const updatedCounters = counters.map((counter) => {
@@ -86,6 +87,17 @@ export const MultipleCounters = () => {
         <Switch onChange={handleSwitchState} label="Активировать счетчики" />
       </Flex>
       <Divider my="md" />
+        <Modal
+          title="Удалить счетчик?"
+          opened={opened}
+          onClose={close}
+        >
+          Вы действительно сбросить счетчики?
+          <Group mt="lg" justify="flex-end">
+            <Button>Отменить</Button>
+            <Button>Сбросить на 0</Button>
+          </Group>
+        </Modal>
       {checked ? (
         <Stack
           mih={50}
@@ -97,6 +109,7 @@ export const MultipleCounters = () => {
         >
           {counters.map((counter) => (
             <SingleCounter
+              key={counter.id}
               id={counter.id}
               onIncrement={onIncrement}
               onDecrement={onDecrement}
@@ -104,7 +117,7 @@ export const MultipleCounters = () => {
               count={counter.value}
             />
           ))}
-          <Button color="red" onClick={onMasterReset}>
+          <Button color="red" onClick={open}>
             MasterReset
           </Button>
         </Stack>
