@@ -70,6 +70,15 @@ export const MultipleCounters = () => {
       };
     });
     setCounters(updatedCounters);
+    close();
+  };
+
+  const handleCountRemove = (id) => {
+    const updatedCounters = counters.filter((counter) => {
+      return counter.id !== id;
+    });
+    setCounters(updatedCounters);
+    close();
   };
 
   const handleSwitchState = () => setChecked(!checked);
@@ -87,21 +96,21 @@ export const MultipleCounters = () => {
         <Switch onChange={handleSwitchState} label="Активировать счетчики" />
       </Flex>
       <Divider my="md" />
-        <Modal
-          title="Удалить счетчик?"
-          opened={opened}
-          onClose={close}
-        >
-          Вы действительно сбросить счетчики?
-          <Group mt="lg" justify="flex-end">
-            <Button variant="default">Отменить</Button>
-            <Button color="red">Сбросить на 0</Button>
-          </Group>
-        </Modal>
+      <Modal title="Удалить счетчик?" opened={opened} onClose={close}>
+        Вы действительно хотите сбросить счетчики?
+        <Group mt="lg" justify="flex-end">
+          <Button variant="default" onClick={close}>
+            Отменить
+          </Button>
+          <Button color="red" onClick={onMasterReset}>
+            Сбросить на 0
+          </Button>
+        </Group>
+      </Modal>
       {checked ? (
         <Stack
           mih={50}
-          gap="xs"
+          gap="0.3"
           justify="center"
           align="center"
           direction="row"
@@ -114,6 +123,9 @@ export const MultipleCounters = () => {
               onIncrement={onIncrement}
               onDecrement={onDecrement}
               onReset={onReset}
+              handleCountRemove={handleCountRemove}
+              open={open}
+              close={close}
               count={counter.value}
             />
           ))}
