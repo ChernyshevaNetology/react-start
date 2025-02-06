@@ -10,6 +10,7 @@ import {
   Group,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { nanoid } from "nanoid";
 
 const data = [
   { id: 1, value: 0 },
@@ -81,6 +82,13 @@ export const MultipleCounters = () => {
     close();
   };
 
+  const onAdd = () => {
+    setCounters([
+      ...counters,
+      { id: nanoid(), value: Math.floor(Math.random() * 6) },
+    ]);
+  };
+
   const handleSwitchState = () => setChecked(!checked);
 
   return (
@@ -123,6 +131,7 @@ export const MultipleCounters = () => {
               onIncrement={onIncrement}
               onDecrement={onDecrement}
               onReset={onReset}
+              onAdd={onAdd}
               handleCountRemove={handleCountRemove}
               open={open}
               close={close}
@@ -132,6 +141,18 @@ export const MultipleCounters = () => {
           <Button color="red" onClick={open}>
             MasterReset
           </Button>
+          <Flex
+            mih={50}
+            gap="xs"
+            justify="center"
+            align="center"
+            direction="row"
+            wrap="wrap"
+          >
+            <Button color="red" onClick={onAdd}>
+              Добавить счетчик
+            </Button>
+          </Flex>
         </Stack>
       ) : null}
     </>
