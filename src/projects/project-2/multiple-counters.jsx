@@ -7,6 +7,7 @@ import {
   Divider,
   Button,
   Modal,
+  Select,
   Group,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -24,6 +25,8 @@ export const MultipleCounters = () => {
   const [counters, setCounters] = useState(data);
   const [checked, setChecked] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
+  const [filter, setFilter] = useState(null);
+  const [sortingOption, setSortingOption] = useState(null);
 
   const onIncrement = (id) => {
     const updatedCounters = counters.map((counter) => {
@@ -89,6 +92,14 @@ export const MultipleCounters = () => {
     ]);
   };
 
+  const onSetSortingOption = () => {
+    setSortingOption(sortingOption);
+  };
+
+  const onSetFilter = () => {
+    setFilter(filter);
+  };
+
   const handleSwitchState = () => setChecked(!checked);
 
   return (
@@ -104,6 +115,38 @@ export const MultipleCounters = () => {
         <Switch onChange={handleSwitchState} label="Активировать счетчики" />
       </Flex>
       <Divider my="md" />
+      <Flex
+        mih={50}
+        gap="xs"
+        justify="center"
+        align="center"
+        direction="row"
+        wrap="wrap"
+      >
+        <Select
+          label="Отфильтровать"
+          placeholder="Выбрать"
+          data={[
+            { label: "Все", value: "all" },
+            { label: "Отрицательные", value: "negative" },
+            { label: "Нулевые", value: "zero" },
+            { label: "Более одного", value: "moreThanOne" },
+            { label: "Более десяти", value: "moreThanTen" },
+          ]}
+          value={filter}
+          onChange={setFilter}
+        />
+        <Select
+          label="Отсортировать"
+          placeholder="Выбрать"
+          data={[
+            { label: "По возрастанию", value: "ascending" },
+            { label: "По убыванию", value: "descending" },
+          ]}
+          value={sortingOption}
+          onChange={setSortingOption}
+        />
+      </Flex>
       <Modal title="Удалить счетчик?" opened={opened} onClose={close}>
         Вы действительно хотите сбросить счетчики?
         <Group mt="lg" justify="flex-end">
