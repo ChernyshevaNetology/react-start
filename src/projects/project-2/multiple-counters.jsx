@@ -92,11 +92,11 @@ export const MultipleCounters = () => {
     ]);
   };
 
-  const onSetSortingOption = () => {
+  const onSetSortingOption = (sortingOption) => {
     setSortingOption(sortingOption);
   };
 
-  const onSetFilter = () => {
+  const onSetFilter = (filter) => {
     setFilter(filter);
   };
 
@@ -134,7 +134,7 @@ export const MultipleCounters = () => {
             { label: "Более десяти", value: "moreThanTen" },
           ]}
           value={filter}
-          onChange={setFilter}
+          onChange={onSetFilter}
         />
         <Select
           label="Отсортировать"
@@ -144,7 +144,7 @@ export const MultipleCounters = () => {
             { label: "По убыванию", value: "descending" },
           ]}
           value={sortingOption}
-          onChange={setSortingOption}
+          onChange={onSetSortingOption}
         />
       </Flex>
       <Modal title="Удалить счетчик?" opened={opened} onClose={close}>
