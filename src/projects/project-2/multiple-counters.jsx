@@ -92,12 +92,40 @@ export const MultipleCounters = () => {
     ]);
   };
 
-  const onSetSortingOption = (sortingOption) => {
-    setSortingOption(sortingOption);
-  };
-
   const onSetFilter = (filter) => {
     setFilter(filter);
+    const updatedCounters = counters.filter((counter) => {
+      switch (filter) {
+        case filter === "negative" && counter.value < 0:
+          setCounters([...counters, { id: counter.id, value: counter.value }]);
+          break;
+        case filter === "all":
+          setCounters([...counters, { id: counter.id, value: counter.value }]);
+          break;
+        case filter === "zero" && counter.value === 0:
+          setCounters([...counters, { id: counter.id, value: counter.value }]);
+          break;
+        case filter === "moreThanOne" && counter.value > 1:
+          setCounters([...counters, { id: counter.id, value: counter.value }]);
+          break;
+        case filter === "moreThanTen" && counter.value > 10:
+          setCounters([...counters, { id: counter.id, value: counter.value }]);
+      }
+    });
+    setCounters(updatedCounters);
+  };
+
+  const onSetSortingOption = (sortingOption) => {
+    setSortingOption(sortingOption);
+    const updatedCounters = counters.sort((a, b) => {
+      if (sortingOption === "ascending") {
+        return a.value - b.value;
+      }
+      if (sortingOption === "descending") {
+        return b.value - a.value;
+      }
+    });
+    setCounters(updatedCounters);
   };
 
   const handleSwitchState = () => setChecked(!checked);
