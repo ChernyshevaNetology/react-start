@@ -21,12 +21,46 @@ const data = [
   { id: 5, value: 1 },
 ];
 
+const middleWareCode = (store, filter, sortOption) => {
+  let preparedCounters = [...store];
+  if (filter === "negative") {
+    preparedCounters.filter((product) => product.value < 0);
+  }
+  if (filter === "zero") {
+    preparedCounters.filter((product) => product.value === 0);
+  }
+  if (filter === "moreThanOne") {
+    preparedCounters.filter((product) => product.value > 1);
+  }
+  if (filter === "moreThanOne") {
+    preparedCounters.filter((product) => product.value > 1);
+  }
+  if (filter === "moreTen") {
+    preparedCounters.filter((product) => product.value > 1);
+  }
+  if (filter === "moreThanOne") {
+    preparedCounters.filter((product) => product.value > 10);
+  }
+  if (filter === "moreThanTen") {
+    preparedCounters.filter((product) => product.value > 10);
+  }
+  if (sortOption === "descending") {
+    preparedCounters.sort((a, b) => b.value - a.value);
+  }
+  if (sortOption === "ascending") {
+    preparedCounters.sort((a, b) => a.value - b.value);
+  }
+  return preparedCounters;
+};
+
 export const MultipleCounters = () => {
   const [counters, setCounters] = useState(data);
   const [checked, setChecked] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const [filter, setFilter] = useState(null);
   const [sortingOption, setSortingOption] = useState(null);
+
+  const counterProcessed = middleWareCode(counters, filter, sortingOption);
 
   const onIncrement = (id) => {
     const updatedCounters = counters.map((counter) => {
@@ -94,38 +128,10 @@ export const MultipleCounters = () => {
 
   const onSetFilter = (filter) => {
     setFilter(filter);
-    const updatedCounters = counters.filter((counter) => {
-      switch (filter) {
-        case filter === "negative" && counter.value < 0:
-          setCounters([...counters, { id: counter.id, value: counter.value }]);
-          break;
-        case filter === "all":
-          setCounters([...counters, { id: counter.id, value: counter.value }]);
-          break;
-        case filter === "zero" && counter.value === 0:
-          setCounters([...counters, { id: counter.id, value: counter.value }]);
-          break;
-        case filter === "moreThanOne" && counter.value > 1:
-          setCounters([...counters, { id: counter.id, value: counter.value }]);
-          break;
-        case filter === "moreThanTen" && counter.value > 10:
-          setCounters([...counters, { id: counter.id, value: counter.value }]);
-      }
-    });
-    setCounters(updatedCounters);
   };
 
   const onSetSortingOption = (sortingOption) => {
     setSortingOption(sortingOption);
-    const updatedCounters = counters.sort((a, b) => {
-      if (sortingOption === "ascending") {
-        return a.value - b.value;
-      }
-      if (sortingOption === "descending") {
-        return b.value - a.value;
-      }
-    });
-    setCounters(updatedCounters);
   };
 
   const handleSwitchState = () => setChecked(!checked);
@@ -195,7 +201,7 @@ export const MultipleCounters = () => {
           direction="row"
           wrap="wrap"
         >
-          {counters.map((counter) => (
+          {counterProcessed.map((counter) => (
             <SingleCounter
               key={counter.id}
               id={counter.id}
