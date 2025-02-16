@@ -23,26 +23,20 @@ const data = [
 
 const middleWareCode = (store, filter, sortOption) => {
   let preparedCounters = [...store];
+
   if (filter === "negative") {
-    preparedCounters.filter((product) => product.value < 0);
+    preparedCounters = preparedCounters.filter((product) => product.value < 0);
   }
   if (filter === "zero") {
-    preparedCounters.filter((product) => product.value === 0);
+    preparedCounters = preparedCounters.filter(
+      (product) => product.value === 0,
+    );
   }
   if (filter === "moreThanOne") {
-    preparedCounters.filter((product) => product.value > 1);
-  }
-  if (filter === "moreThanOne") {
-    preparedCounters.filter((product) => product.value > 1);
-  }
-  if (filter === "moreTen") {
-    preparedCounters.filter((product) => product.value > 1);
-  }
-  if (filter === "moreThanOne") {
-    preparedCounters.filter((product) => product.value > 10);
+    preparedCounters = preparedCounters.filter((product) => product.value > 1);
   }
   if (filter === "moreThanTen") {
-    preparedCounters.filter((product) => product.value > 10);
+    preparedCounters = preparedCounters.filter((product) => product.value > 10);
   }
   if (sortOption === "descending") {
     preparedCounters.sort((a, b) => b.value - a.value);
