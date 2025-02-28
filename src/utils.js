@@ -47,7 +47,7 @@ export const statCalculator = (dataCounters, ringData) => {
     { negative: 0, zero: 0, moreThanOne: 0, moreThanTen: 0 },
   );
   for (const key in obj) {
-    obj[key] = +(obj[key] / dataCounters.length).toFixed(2) * 100;
+    obj[key] = +(obj[key] / dataCounters.length) * 100;
   }
   return obj;
 };

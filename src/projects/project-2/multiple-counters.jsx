@@ -16,7 +16,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { nanoid } from "nanoid";
 import { InsuranceCompany } from "../../components/insurance-company";
-import { middleWareCode, getTotalCount, statCalculator } from "../../utils.jsx";
+import { middleWareCode, getTotalCount, statCalculator } from "../../utils.js";
 
 const data = [
   { id: 1, value: 0 },
