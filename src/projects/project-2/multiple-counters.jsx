@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SingleCounter } from "./single-counter";
 import {
   Flex,
@@ -9,9 +9,14 @@ import {
   Modal,
   Select,
   Group,
+  Badge,
+  RingProgress,
+  Text,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { nanoid } from "nanoid";
+import { InsuranceCompany } from "../../components/insurance-company";
+import { middleWareCode, getTotalCount, statCalculator } from "../../utils.jsx";
 
 const data = [
   { id: 1, value: 0 },
@@ -21,31 +26,7 @@ const data = [
   { id: 5, value: 1 },
 ];
 
-const middleWareCode = (store, filter, sortOption) => {
-  let preparedCounters = [...store];
-
-  if (filter === "negative") {
-    preparedCounters = preparedCounters.filter((product) => product.value < 0);
-  }
-  if (filter === "zero") {
-    preparedCounters = preparedCounters.filter(
-      (product) => product.value === 0,
-    );
-  }
-  if (filter === "moreThanOne") {
-    preparedCounters = preparedCounters.filter((product) => product.value > 1);
-  }
-  if (filter === "moreThanTen") {
-    preparedCounters = preparedCounters.filter((product) => product.value > 10);
-  }
-  if (sortOption === "descending") {
-    preparedCounters.sort((a, b) => b.value - a.value);
-  }
-  if (sortOption === "ascending") {
-    preparedCounters.sort((a, b) => a.value - b.value);
-  }
-  return preparedCounters;
-};
+const API = "https://jsonplaceholder.typicode.com/users/";
 
 export const MultipleCounters = () => {
   const [counters, setCounters] = useState(data);
@@ -53,8 +34,34 @@ export const MultipleCounters = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [filter, setFilter] = useState(null);
   const [sortingOption, setSortingOption] = useState(null);
+  const [apiData, setApiData] = useState(null);
+  const [totalCount, setTotalCount] = useState(null);
+  const [counterStats, setCounterStats] = useState(statCalculator(counters));
 
   const counterProcessed = middleWareCode(counters, filter, sortingOption);
+
+  useEffect(() => {
+    if (filter === "moreThanTen") {
+      const fetchInsuranceDataFromApi = async (url, filter) => {
+        try {
+          const data = await fetch(url);
+          const jsonData = await data.json();
+          setApiData(jsonData);
+        } catch (err) {
+          console.warn(err, "Не удалось получить данные");
+        }
+      };
+      fetchInsuranceDataFromApi(API);
+    }
+  }, [filter]);
+
+  useEffect(() => {
+    setTotalCount(getTotalCount(counters));
+  }, [counters]);
+
+  useEffect(() => {
+    setCounterStats(statCalculator(counters));
+  }, [counters]);
 
   const onIncrement = (id) => {
     const updatedCounters = counters.map((counter) => {
@@ -151,6 +158,18 @@ export const MultipleCounters = () => {
         direction="row"
         wrap="wrap"
       >
+        <Badge size="xl" circle>
+          {totalCount}
+        </Badge>
+      </Flex>
+      <Flex
+        mih={50}
+        gap="xs"
+        justify="center"
+        align="center"
+        direction="row"
+        wrap="wrap"
+      >
         <Select
           label="Отфильтровать"
           placeholder="Выбрать"
@@ -226,6 +245,81 @@ export const MultipleCounters = () => {
           </Flex>
         </Stack>
       ) : null}
+      <Flex
+        mih={50}
+        gap="xs"
+        justify="center"
+        align="center"
+        direction="row"
+        wrap="wrap"
+      >
+        <RingProgress
+          size={250}
+          thickness={20}
+          label={
+            <Text
+              size="xs"
+              ta="center"
+              px="xs"
+              style={{ pointerEvents: "none" }}
+            >
+              Hover sections to see tooltips
+            </Text>
+          }
+          sections={[
+            {
+              value: counterStats.negative,
+              color: "cyan",
+              tooltip: "Отрицательные счетчики",
+            },
+            {
+              value: counterStats.zero,
+              color: "orange",
+              tooltip: "Нулевые счетчики",
+            },
+            {
+              value: counterStats.moreThanOne,
+              color: "grape",
+              tooltip: "От 1 до 10",
+            },
+            {
+              value: counterStats.moreThanTen,
+              color: "red",
+              tooltip: "Больше 10",
+            },
+          ]}
+        />
+      </Flex>
+      {apiData && (
+        <>
+          <Flex
+            mih={50}
+            gap="xs"
+            justify="center"
+            align="center"
+            direction="row"
+            wrap="wrap"
+          >
+            <h2>Для данной опции доступны следующие страховые компании</h2>
+          </Flex>
+          <Flex
+            mih={50}
+            gap="xs"
+            justify="center"
+            align="center"
+            direction="row"
+            wrap="wrap"
+          >
+            {apiData.map((item) => (
+              <InsuranceCompany
+                key={item.id}
+                name={item.company.name}
+                description={item.company.catchPhrase}
+              />
+            ))}
+          </Flex>
+        </>
+      )}
     </>
   );
 };
