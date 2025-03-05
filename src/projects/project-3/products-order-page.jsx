@@ -4,25 +4,26 @@ import { useForm } from "@mantine/form";
 
 // это общая страница продуктов она будет строится из различных компонентов и форм
 
-const form = useForm({
-  mode: "uncontrolled",
-  initialValues: {
-    name: "",
-    lastName: "",
-    email: "",
-    termsOfService: false,
-  },
-
-  validate: {
-    name: (value) => (value ? null : "Invalid name"),
-    lastName: (value) => (value ? null : "Invalid last name"),
-    email: (value) =>
-      /^\S+@\S+$/.test(value) ? null : "Invalid email address",
-    termsOfService: (value) => (value ? null : "You have not checked the box"),
-  },
-});
-
 export const ProductsOrderPage = () => {
+  const form = useForm({
+    mode: "uncontrolled",
+    initialValues: {
+      name: "",
+      lastName: "",
+      email: "",
+      termsOfService: false,
+    },
+
+    validate: {
+      name: (value) => (value ? null : "Invalid name"),
+      lastName: (value) => (value ? null : "Invalid last name"),
+      email: (value) =>
+        /^\S+@\S+$/.test(value) ? null : "Invalid email address",
+      termsOfService: (value) =>
+        value ? null : "You have not checked the box",
+    },
+  });
+
   return (
     <div>
       <Flex
