@@ -34,33 +34,33 @@ export const preSelectedProducts = [
 
 export const additionalServices = [
   {
+    key: "themes",
     name: "Премиальные темы",
     price: 7990,
-    selected: false,
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
   {
+    key: "ios",
     name: "iOS приложение",
     price: 9990,
-    selected: false,
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
   {
+    key: "android",
     name: "Android приложение",
     price: 9990,
-    selected: false,
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
   {
+    key: "seo",
     name: "Базовый пакет услуг SEO",
     price: 7990,
-    selected: false,
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
   {
+    key: "dbTransfer",
     name: "Импорт базы данных",
     price: 19990,
-    selected: false,
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
 ];

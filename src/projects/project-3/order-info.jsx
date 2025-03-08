@@ -1,4 +1,4 @@
-import { Paper, Text, Button, Divider, Group , Badge } from "@mantine/core";
+import { Paper, Text, Button, Divider, Group } from "@mantine/core";
 
 export const OrderInfo = () => {
   return (
@@ -25,7 +25,7 @@ export const OrderInfo = () => {
               <Text>150 000 ₽</Text>
           </Group>
 
-        <Button color="blue" fullWidth mt="md" radius="md">
+        <Button  color="blue" fullWidth mt="md" radius="md">
           Перейти к оплате
         </Button>
       </Paper>
