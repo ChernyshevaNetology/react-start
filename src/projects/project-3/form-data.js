@@ -16,7 +16,7 @@ export const preSelectedProducts = [
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
   {
-    name: "41 плагинов",
+    name: "42 плагина",
     selected: true,
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },

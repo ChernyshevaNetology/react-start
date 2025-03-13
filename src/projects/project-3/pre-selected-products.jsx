@@ -1,7 +1,8 @@
 import React from "react";
-import { preSelectedProducts, additionalServices } from "./form-data";
+import { Checkbox, Stack } from "@mantine/core";
+import { preSelectedProducts } from "./form-data";
 
 // Компонент для предвыбранных продуктов
-export const PreSelectedProducts = () => {
+export const PreselectedProductsForm = () => {
   return <div></div>;
 };
