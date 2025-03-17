@@ -70,3 +70,26 @@ export const additionalServices = [
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
 ];
+
+export const customerDetails = [
+  {
+    key: "ФИО",
+    name: "Введите свое ФИО",
+  },
+  { key: "Email", name: "Введите email" },
+  { key: "Компания", name: "Опциально" },
+  { key: "Телефон", name: "Ваш телефон" },
+  { key: "Страна" },
+  { key: "Область", name: "Введите область" },
+  { key: "Город", name: "Введите город" },
+  { key: "Почтовый индекс", name: "Опциально" },
+  { key: "Адрес", name: "Опциально" },
+];
+
+export const countrySelect = [
+  { name: "Россия" },
+  { name: "Баларусь" },
+  { name: "Кыргызстан" },
+  { name: "Казакстан" },
+  { name: "Узбекистан" },
+];

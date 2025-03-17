@@ -5,20 +5,14 @@ import { CustomerInfoForm } from "./forms/customer-info-form";
 import { OrderInfo } from "./order-info";
 import { ProductSelectForm } from "./forms/product-select-form";
 import { preSelectedProducts } from "./form-data.js";
+import { PreselectedProductsForm } from "./pre-selected-products";
+import { CustomerConsentForm } from "./forms/customer-consent.jsx";
 
 export const ProductsOrderPage = () => {
   const flynaxForm = useFlynaxForm({
     mode: "uncontrolled",
     initialValues: {
       product: "",
-      preSelectedProducts: [
-        { license: true },
-        { support: true },
-        { freeTemplate: true },
-        { freePlugins: true },
-        { installation: true },
-        { brandingRemoval: true },
-      ],
       additionalServices: [
         { premiumTemplates: false },
         { ios: false },
@@ -52,8 +46,10 @@ export const ProductsOrderPage = () => {
             gap="md"
           >
             <ProductSelectForm />
+            <PreselectedProductsForm />
             <AdditionalServicesForm />
             <CustomerInfoForm />
+            <CustomerConsentForm />
           </Stack>
         </Grid.Col>
         <Grid.Col span={4}>{/*<OrderInfo />*/}</Grid.Col>
