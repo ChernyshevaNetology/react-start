@@ -2,9 +2,7 @@ import { Grid, Stack } from "@mantine/core";
 import { FlynaxFormProvider, useFlynaxForm } from "./forms/flynax-form-context";
 import { AdditionalServicesForm } from "./forms/additional-services-form";
 import { CustomerInfoForm } from "./forms/customer-info-form";
-import { OrderInfo } from "./order-info";
 import { ProductSelectForm } from "./forms/product-select-form";
-import { preSelectedProducts } from "./form-data.js";
 import { PreselectedProductsForm } from "./pre-selected-products";
 import { CustomerConsentForm } from "./forms/customer-consent.jsx";
 
@@ -25,8 +23,6 @@ export const ProductsOrderPage = () => {
         email: "",
         company: "",
         phone: "",
-        country: "",
-        state: "",
         city: "",
         zipCode: "",
         address: "",

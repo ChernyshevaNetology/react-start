@@ -1,14 +1,20 @@
 import React from "react";
 import { Checkbox, Stack } from "@mantine/core";
 import { useFlynaxFormContext } from "./flynax-form-context";
+import { customerConsent } from "../form-data";
 
 export const CustomerConsentForm = () => {
   const form = useFlynaxFormContext();
   return (
     <div>
       <Stack>
-        <Checkbox label="Я принимаю условия публичной оферты" />
-        <Checkbox label="Я даю согласие на обработку персональных данных" />
+        {customerConsent.map(({ name }) => (
+          <Checkbox
+            label={name}
+            key={form.key("clientsConsents")}
+            {...form.getInputProps("clientsConsents")}
+          />
+        ))}
       </Stack>
     </div>
   );

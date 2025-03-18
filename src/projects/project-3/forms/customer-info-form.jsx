@@ -9,8 +9,13 @@ export const CustomerInfoForm = () => {
   return (
     <div>
       <Fieldset legend="ИНФОРМАЦИЯ О КЛИЕНТЕ">
-        {customerDetails.map(({ key, name }) => (
-          <TextInput label={key} placeholder={name} />
+        {customerDetails.map(({ key, name }, idx) => (
+          <TextInput
+            label={key}
+            placeholder={name}
+            key={form.key(`customerDetails.${[idx]}.${key}`)}
+            {...form.getInputProps(`customerDetails.${[idx]}.${key}`)}
+          />
         ))}
       </Fieldset>
     </div>
