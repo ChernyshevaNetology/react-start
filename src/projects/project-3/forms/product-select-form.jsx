@@ -5,7 +5,7 @@ import { Select } from "@mantine/core";
 export const ProductSelectForm = () => {
   const form = useFlynaxFormContext();
   return (
-    <div>
+    <>
       <Select
         label="Продукт"
         placeholder="Выберите продукт"
@@ -20,6 +20,6 @@ export const ProductSelectForm = () => {
         key={form.key("product")}
         {...form.getInputProps("product")}
       />
-    </div>
+    </>
   );
 };

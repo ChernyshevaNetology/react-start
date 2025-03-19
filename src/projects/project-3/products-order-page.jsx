@@ -1,11 +1,11 @@
 import { Grid, Stack } from "@mantine/core";
 import { FlynaxFormProvider, useFlynaxForm } from "./forms/flynax-form-context";
+import { OrderInfo } from "./order-info.jsx";
 import { AdditionalServicesForm } from "./forms/additional-services-form";
 import { CustomerInfoForm } from "./forms/customer-info-form";
 import { ProductSelectForm } from "./forms/product-select-form";
 import { PreselectedProductsForm } from "./pre-selected-products";
 import { CustomerConsentForm } from "./forms/customer-consent.jsx";
-import { customerConsent, customerDetails } from "./form-data.js";
 
 export const ProductsOrderPage = () => {
   const flynaxForm = useFlynaxForm({
@@ -18,6 +18,7 @@ export const ProductsOrderPage = () => {
         { android: false },
         { premiumPlugins: false },
         { seo: false },
+        {dbTransfer: false},
       ],
       customerDetails: [
         { name: "" },
@@ -38,7 +39,7 @@ export const ProductsOrderPage = () => {
   return (
     <FlynaxFormProvider form={flynaxForm}>
       <Grid>
-        <Grid.Col span={4}>
+        <Grid.Col span={4} offset={1}>
           <Stack
             bg="var(--mantine-color-body)"
             align="stretch"
@@ -52,7 +53,9 @@ export const ProductsOrderPage = () => {
             <CustomerConsentForm />
           </Stack>
         </Grid.Col>
-        <Grid.Col span={4}>{/*<OrderInfo />*/}</Grid.Col>
+        <Grid.Col span={4} offset={2}>
+          <OrderInfo />
+        </Grid.Col>
       </Grid>
     </FlynaxFormProvider>
   );
