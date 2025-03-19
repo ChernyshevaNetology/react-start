@@ -8,11 +8,12 @@ export const CustomerConsentForm = () => {
   return (
     <div>
       <Stack>
-        {customerConsent.map(({ name }) => (
+        {customerConsent.map(({ name, key }, idx) => (
           <Checkbox
+            value={key}
             label={name}
-            key={form.key("clientsConsents")}
-            {...form.getInputProps("clientsConsents")}
+            key={form.key(`customerConsent.${[idx]}.${key}`)}
+            {...form.getInputProps(`customerConsent.${[idx]}.${key}`)}
           />
         ))}
       </Stack>

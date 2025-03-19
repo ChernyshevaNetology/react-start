@@ -40,7 +40,7 @@ export const preSelectedProducts = [
 
 export const additionalServices = [
   {
-    key: "themes",
+    key: "premiumTemplates",
     name: "Премиальные темы",
     price: 7990,
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
@@ -64,6 +64,11 @@ export const additionalServices = [
     toolTipText: "Dummy Tooltip text to display as popup when clicked",
   },
   {
+    key: "premiumPlugins",
+    name: "Премиальные плагины",
+    toolTipText: "Dummy Tooltip text to display as popup when clicked",
+  },
+  {
     key: "dbTransfer",
     name: "Импорт базы данных",
     price: 19990,
@@ -73,8 +78,8 @@ export const additionalServices = [
 
 export const customerDetails = [
   {
-    key: "ФИО",
-    name: "Введите свое ФИО",
+    key: "name",
+    name: "ФИО",
   },
   { key: "Email", name: "Введите email" },
   { key: "Компания", name: "Опциально" },
@@ -85,6 +90,6 @@ export const customerDetails = [
 ];
 
 export const customerConsent = [
-  { name: "Я принимаю условия публичной оферты" },
-  { name: "Я согласен на обработку персональных данных" },
+  { key: "eula", name: "Я принимаю условия публичной оферты" },
+  { key: "termsOfUse", name: "Я согласен на обработку персональных данных" },
 ];

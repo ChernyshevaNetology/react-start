@@ -5,10 +5,11 @@ import { CustomerInfoForm } from "./forms/customer-info-form";
 import { ProductSelectForm } from "./forms/product-select-form";
 import { PreselectedProductsForm } from "./pre-selected-products";
 import { CustomerConsentForm } from "./forms/customer-consent.jsx";
+import { customerConsent, customerDetails } from "./form-data.js";
 
 export const ProductsOrderPage = () => {
   const flynaxForm = useFlynaxForm({
-    mode: "uncontrolled",
+    mode: "controlled",
     initialValues: {
       product: "",
       additionalServices: [
@@ -18,16 +19,19 @@ export const ProductsOrderPage = () => {
         { premiumPlugins: false },
         { seo: false },
       ],
-      customerDetails: {
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        city: "",
-        zipCode: "",
-        address: "",
-      },
-      clientsConsents: [{ eula: false }, { termsOfUse: false }],
+      customerDetails: [
+        { name: "" },
+        { email: "" },
+        { company: "" },
+        { phone: "" },
+        { city: "" },
+        { zipCode: "" },
+        { address: "" },
+      ],
+      customerConsent: [{ eula: false }, { termsOfUse: false }],
+    },
+    onValuesChange: (values) => {
+      console.log("values", values);
     },
   });
 
