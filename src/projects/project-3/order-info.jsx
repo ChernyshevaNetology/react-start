@@ -1,8 +1,7 @@
 import { Paper, Text, Button, Divider, Group } from "@mantine/core";
 
-
 export const OrderInfo = () => {
-    return (
+  return (
     <Paper shadow="sm" p="xl" bg="var(--mantine-color-gray-1)">
       <Text fw={700}>Мой заказ</Text>
       <Divider my="md" />

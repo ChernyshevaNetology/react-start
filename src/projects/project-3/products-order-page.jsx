@@ -18,7 +18,7 @@ export const ProductsOrderPage = () => {
         { android: false },
         { premiumPlugins: false },
         { seo: false },
-        {dbTransfer: false},
+        { dbTransfer: false },
       ],
       customerDetails: [
         { name: "" },
@@ -39,7 +39,7 @@ export const ProductsOrderPage = () => {
   return (
     <FlynaxFormProvider form={flynaxForm}>
       <Grid>
-        <Grid.Col span={4} offset={1}>
+        <Grid.Col span={6} offset={1}>
           <Stack
             bg="var(--mantine-color-body)"
             align="stretch"
@@ -53,7 +53,7 @@ export const ProductsOrderPage = () => {
             <CustomerConsentForm />
           </Stack>
         </Grid.Col>
-        <Grid.Col span={4} offset={2}>
+        <Grid.Col span={4}>
           <OrderInfo />
         </Grid.Col>
       </Grid>

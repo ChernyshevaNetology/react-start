@@ -1,6 +1,6 @@
 import React from "react";
 import { preSelectedProducts } from "./form-data";
-import { Stack } from '@mantine/core';
+import { Stack } from "@mantine/core";
 import { StaticProductItem } from "./components/static-product-item.jsx";
 
 export const PreselectedProductsForm = () => {

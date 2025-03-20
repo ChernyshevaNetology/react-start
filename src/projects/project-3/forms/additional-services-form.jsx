@@ -1,24 +1,30 @@
 import React from "react";
-import { Checkbox, Fieldset, Stack } from "@mantine/core";
+import { Text, Stack, Space } from "@mantine/core";
 import { additionalServices } from "../form-data";
 import { useFlynaxFormContext } from "./flynax-form-context";
+import { ProductItem } from "../components/product-item";
 
 export const AdditionalServicesForm = () => {
   const form = useFlynaxFormContext();
   return (
     <div>
-      <Fieldset legend="ДОПОЛНЕНИЯ И УСЛУГИ">
-        <Stack>
-          {additionalServices.map(({ key, name }, idx) => (
-            <Checkbox
-              value={key}
-              label={name}
-              key={form.key(`additionalServices.${[idx]}.${key}`)}
-              {...form.getInputProps(`additionalServices.${[idx]}.${key}`)}
+      <Text>ДОПОЛНЕНИЯ И УСЛУГИ</Text>
+      <Space h="lg" />
+      <Stack>
+        {additionalServices.map(
+          ({ key, name, toolTipText, price, pluginSelect }, idx) => (
+            <ProductItem
+              key={key}
+              name={name}
+              price={price}
+              idx={idx}
+              toolTipText={toolTipText}
+              form={form}
+              pluginSelect={pluginSelect}
             />
-          ))}
-        </Stack>
-      </Fieldset>
+          ),
+        )}
+      </Stack>
     </div>
   );
 };
