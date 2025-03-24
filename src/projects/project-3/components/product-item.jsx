@@ -10,21 +10,22 @@ import {
 } from "@mantine/core";
 import { IconQuestionMark } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
+import { PluginSelectForm } from "../forms/plugin-select-form";
 
 export const ProductItem = ({
-  key,
+  formKey,
+  form,
   name,
   price,
   toolTipText,
   pluginSelect,
-  idx,
 }) => {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <Grid>
-      <Modal title="Удалить счетчик?" opened={opened} onClose={close}>
-        <Text>"Премиальные плагины"</Text>
-        {/* <PluginsList />*/}
+      <Modal opened={opened} onClose={close} size="90%">
+        <Text>Выбрать плагин</Text>
+        <PluginSelectForm />
       </Modal>
       <Grid.Col span={5}>
         <Text>{name}</Text>

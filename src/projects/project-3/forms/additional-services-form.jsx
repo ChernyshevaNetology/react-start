@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Stack, Space } from "@mantine/core";
+import { Text, Stack, Space, Divider } from "@mantine/core";
 import { additionalServices } from "../form-data";
 import { useFlynaxFormContext } from "./flynax-form-context";
 import { ProductItem } from "../components/product-item";
@@ -8,13 +8,15 @@ export const AdditionalServicesForm = () => {
   const form = useFlynaxFormContext();
   return (
     <div>
-      <Text>ДОПОЛНЕНИЯ И УСЛУГИ</Text>
+      <Text fw={500}>ДОПОЛНЕНИЯ И УСЛУГИ</Text>
+      <Divider />
       <Space h="lg" />
       <Stack>
         {additionalServices.map(
-          ({ key, name, toolTipText, price, pluginSelect }, idx) => (
+          ({ id, key, name, toolTipText, price, pluginSelect }, idx) => (
             <ProductItem
-              key={key}
+              key={id}
+              formKey={key}
               name={name}
               price={price}
               idx={idx}

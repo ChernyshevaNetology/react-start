@@ -21,7 +21,7 @@ export const StaticProductItem = ({ name, toolTipText, price }) => {
       <Grid.Col span={1}>
         <Checkbox.Indicator checked color={"grey"} />
       </Grid.Col>
-      <Grid.Col span={4} offset={1}>
+      <Grid.Col span={3}>
         {price ? <Text>{price}</Text> : <Text>Включено</Text>}
       </Grid.Col>
     </Grid>
