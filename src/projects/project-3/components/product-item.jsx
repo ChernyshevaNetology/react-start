@@ -14,6 +14,7 @@ import { PluginSelectForm } from "../forms/plugin-select-form";
 
 export const ProductItem = ({
   formKey,
+  idx,
   form,
   name,
   price,
@@ -42,8 +43,8 @@ export const ProductItem = ({
       </Grid.Col>
       <Grid.Col span={1}>
         <Checkbox
-        /*          key={form.key(`additionalServices.${[idx]}.${key}`)}
-          {...form.getInputProps(`additionalServices.${[idx]}.${key}`)}*/
+          formKey={form.key(`additionalServices.${[idx]}.${formKey}`)}
+          {...form.getInputProps(`additionalServices.${[idx]}.${formKey}`)}
         />
       </Grid.Col>
       <Grid.Col span={5}>
