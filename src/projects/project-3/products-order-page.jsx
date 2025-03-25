@@ -1,12 +1,13 @@
+import React from "react";
 import { Grid, Space, Stack } from "@mantine/core";
 import { FlynaxFormProvider, useFlynaxForm } from "./forms/flynax-form-context";
-import { OrderInfo } from "./order-info.jsx";
+import { OrderInfo } from "./order-info";
 import { AdditionalServicesForm } from "./forms/additional-services-form";
 import { CustomerInfoForm } from "./forms/customer-info-form";
 import { ProductSelectForm } from "./forms/product-select-form";
 import { PreselectedProductsForm } from "./pre-selected-products";
-import { CustomerConsentForm } from "./forms/customer-consent.jsx";
-import React from "react";
+import { CustomerConsentForm } from "./forms/customer-consent";
+import { PluginSelectForm } from "./forms/plugin-select-form";
 
 export const ProductsOrderPage = () => {
   const flynaxForm = useFlynaxForm({
@@ -20,6 +21,23 @@ export const ProductsOrderPage = () => {
         { premiumPlugins: false },
         { seo: false },
         { dbTransfer: false },
+      ],
+      pluginList: [
+        { currency: false },
+        { banners: false },
+        { reviews: false },
+        { similarAds: false },
+        { recentlyViewed: false },
+        { compare: false },
+        { share: false },
+        { autoposter: false },
+        { xmlFeeds: false },
+        { categoryImport: false },
+        { navigation: false },
+        { wordFilter: false },
+        { filter: false },
+        { code: false },
+        { xlsImport: false },
       ],
       customerDetails: [
         { name: "" },
@@ -51,6 +69,7 @@ export const ProductsOrderPage = () => {
             <PreselectedProductsForm />
             <Space h="sm" />
             <AdditionalServicesForm />
+            {/*            <PluginSelectForm />*/}
             <Space h="sm" />
             <CustomerInfoForm />
             <CustomerConsentForm />

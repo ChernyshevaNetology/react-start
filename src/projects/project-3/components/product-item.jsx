@@ -1,33 +1,10 @@
 import React from "react";
-import {
-  Checkbox,
-  Grid,
-  Popover,
-  Text,
-  Anchor,
-  Group,
-  Modal,
-} from "@mantine/core";
+import { Checkbox, Grid, Popover, Text } from "@mantine/core";
 import { IconQuestionMark } from "@tabler/icons-react";
-import { useDisclosure } from "@mantine/hooks";
-import { PluginSelectForm } from "../forms/plugin-select-form";
 
-export const ProductItem = ({
-  formKey,
-  idx,
-  form,
-  name,
-  price,
-  toolTipText,
-  pluginSelect,
-}) => {
-  const [opened, { open, close }] = useDisclosure(false);
+export const ProductItem = ({ formKey, idx, form, name, toolTipText }) => {
   return (
     <Grid>
-      <Modal opened={opened} onClose={close} size="90%">
-        <Text>Выбрать плагин</Text>
-        <PluginSelectForm />
-      </Modal>
       <Grid.Col span={5}>
         <Text>{name}</Text>
       </Grid.Col>
@@ -47,16 +24,7 @@ export const ProductItem = ({
           {...form.getInputProps(`additionalServices.${[idx]}.${formKey}`)}
         />
       </Grid.Col>
-      <Grid.Col span={5}>
-        <Group>
-          {price ? <Text>{price} ₽</Text> : <Text>0 ₽</Text>}
-          {pluginSelect ? (
-            <Anchor onClick={open} underline="hover">
-              Выбрать плагин
-            </Anchor>
-          ) : null}
-        </Group>
-      </Grid.Col>
+      <Grid.Col span={5}></Grid.Col>
     </Grid>
   );
 };

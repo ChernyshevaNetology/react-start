@@ -122,4 +122,6 @@ export const pluginList = [
   { id: 11, key: "navigation", name: "Навигация", price: 2490 },
   { id: 12, key: "wordFilter", name: "Словофильтр", price: 2490 },
   { id: 13, key: "filter", name: "Фильтры", price: 2490 },
+  { id: 14, key: "code", name: "Код подтверждения", price: 2490 },
+  { id: 15, key: "xlsImport", name: "XLS импорт", price: 2490 },
 ];

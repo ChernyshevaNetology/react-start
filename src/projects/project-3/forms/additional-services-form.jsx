@@ -3,6 +3,7 @@ import { Text, Stack, Space, Divider } from "@mantine/core";
 import { additionalServices } from "../form-data";
 import { useFlynaxFormContext } from "./flynax-form-context";
 import { ProductItem } from "../components/product-item";
+import { PluginSelectItemLink } from "../components/plugin-select-item-link";
 
 export const AdditionalServicesForm = () => {
   const form = useFlynaxFormContext();
@@ -13,18 +14,25 @@ export const AdditionalServicesForm = () => {
       <Space h="lg" />
       <Stack>
         {additionalServices.map(
-          ({ id, key, name, toolTipText, price, pluginSelect }, idx) => (
-            <ProductItem
-              key={id}
-              formKey={key}
-              name={name}
-              price={price}
-              idx={idx}
-              toolTipText={toolTipText}
-              form={form}
-              pluginSelect={pluginSelect}
-            />
-          ),
+          ({ id, key, name, toolTipText, price, pluginSelect }, idx) => {
+            if (pluginSelect) {
+              return (
+                <PluginSelectItemLink name={name} toolTipText={toolTipText} />
+              );
+            }
+            return (
+              <ProductItem
+                key={id}
+                formKey={key}
+                name={name}
+                price={price}
+                idx={idx}
+                toolTipText={toolTipText}
+                form={form}
+                pluginSelect={pluginSelect}
+              />
+            );
+          },
         )}
       </Stack>
     </div>
