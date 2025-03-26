@@ -15,6 +15,7 @@ export const CustomerInfoForm = () => {
         {customerDetails.map(({ key, name, toolTipText }, idx) => (
           <CustomerFieldItem
             name={name}
+            idx={idx}
             toolTipText={toolTipText}
             key={form.key(`customerDetails.${[idx]}.${key}`)}
             {...form.getInputProps(`customerDetails.${[idx]}.${key}`)}
