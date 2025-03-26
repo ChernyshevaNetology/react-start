@@ -1,5 +1,15 @@
 import React from "react";
-import { Grid, Popover, Text, Anchor, Group, Modal } from "@mantine/core";
+import {
+  Grid,
+  Popover,
+  Text,
+  Anchor,
+  Group,
+  Modal,
+  Button,
+  Center,
+    Space,
+} from "@mantine/core";
 import { IconQuestionMark } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { PluginSelectForm } from "../forms/plugin-select-form";
@@ -8,9 +18,27 @@ export const PluginSelectItemLink = ({ name, toolTipText }) => {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <Grid>
-      <Modal opened={opened} onClose={close} size="90%">
-        <Text>Выбрать плагин</Text>
+      <Modal
+        opened={opened}
+        onClose={close}
+        overlayProps={{
+          backgroundOpacity: 0.5,
+        }}
+        size={"70%"}
+        padding={"lg"}
+      >
+          <Group>
+              <Text fw={500}>Выбрать плагины</Text>
+              <Anchor>Выделить все</Anchor>
+              <Text>/</Text>
+              <Anchor>Снять выделение</Anchor>
+          </Group>
+          <Space h="md" />
         <PluginSelectForm />
+          <Space h="md" />
+        <Center>
+          <Button onClick={close}>Готово</Button>
+        </Center>
       </Modal>
       <Grid.Col span={5}>
         <Text>{name}</Text>
