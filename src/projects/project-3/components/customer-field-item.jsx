@@ -28,7 +28,7 @@ export const CustomerFieldItem = ({
       </Grid.Col>
       <Grid.Col span={7}>
         <TextInput
-          formKey={form.key(`customerDetails.${[idx]}.${formKey}`)}
+          key={form.key(`customerDetails.${[idx]}.${formKey}`)}
           {...form.getInputProps(`customerDetails.${[idx]}.${formKey}`)}
         />
       </Grid.Col>

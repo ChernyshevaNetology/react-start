@@ -9,9 +9,8 @@ export const PluginSelectForm = () => {
   return (
     <Grid>
       {pluginList.map(({ key, name, id, price }, idx) => (
-        <Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
+        <Grid.Col key={id} span={{ base: 12, md: 6, lg: 4 }}>
           <PluginItem
-            key={id}
             formKey={key}
             name={name}
             price={price}

@@ -17,7 +17,7 @@ export const AdditionalServicesForm = () => {
           ({ id, key, name, toolTipText, price, pluginSelect }, idx) => {
             if (pluginSelect) {
               return (
-                <PluginSelectItemLink name={name} toolTipText={toolTipText} />
+                <PluginSelectItemLink key={id} name={name} toolTipText={toolTipText} />
               );
             }
             return (

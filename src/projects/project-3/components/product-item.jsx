@@ -20,7 +20,7 @@ export const ProductItem = ({ formKey, idx, form, name, toolTipText }) => {
       </Grid.Col>
       <Grid.Col span={1}>
         <Checkbox
-          formKey={form.key(`additionalServices.${[idx]}.${formKey}`)}
+          key={form.key(`additionalServices.${[idx]}.${formKey}`)}
           {...form.getInputProps(`additionalServices.${[idx]}.${formKey}`)}
         />
       </Grid.Col>

@@ -10,7 +10,7 @@ export const PluginItem = ({ formKey, idx, form, price, name }) => {
         </Grid.Col>
         <Grid.Col span={1}>
           <Checkbox
-            formKey={form.key(`pluginList.${[idx]}.${formKey}`)}
+            key={form.key(`pluginList.${[idx]}.${formKey}`)}
             {...form.getInputProps(`pluginList.${[idx]}.${formKey}`)}
           />
         </Grid.Col>
