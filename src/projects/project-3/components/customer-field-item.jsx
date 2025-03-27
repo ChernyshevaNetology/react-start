@@ -2,7 +2,13 @@ import React from "react";
 import { TextInput, Text, Popover, Grid } from "@mantine/core";
 import { IconQuestionMark } from "@tabler/icons-react";
 
-export const CustomerFieldItem = ({ name, toolTipText }) => {
+export const CustomerFieldItem = ({
+  formKey,
+  idx,
+  form,
+  name,
+  toolTipText,
+}) => {
   return (
     <Grid>
       <Grid.Col span={3}>
@@ -21,7 +27,10 @@ export const CustomerFieldItem = ({ name, toolTipText }) => {
         ) : null}
       </Grid.Col>
       <Grid.Col span={7}>
-        <TextInput />
+        <TextInput
+          formKey={form.key(`customerDetails.${[idx]}.${formKey}`)}
+          {...form.getInputProps(`customerDetails.${[idx]}.${formKey}`)}
+        />
       </Grid.Col>
     </Grid>
   );

@@ -8,7 +8,7 @@ import {
   Modal,
   Button,
   Center,
-    Space,
+  Space,
 } from "@mantine/core";
 import { IconQuestionMark } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
@@ -27,15 +27,15 @@ export const PluginSelectItemLink = ({ name, toolTipText }) => {
         size={"70%"}
         padding={"lg"}
       >
-          <Group>
-              <Text fw={500}>Выбрать плагины</Text>
-              <Anchor>Выделить все</Anchor>
-              <Text>/</Text>
-              <Anchor>Снять выделение</Anchor>
-          </Group>
-          <Space h="md" />
+        <Group>
+          <Text fw={500}>Выбрать плагины</Text>
+          <Anchor>Выделить все</Anchor>
+          <Text>/</Text>
+          <Anchor>Снять выделение</Anchor>
+        </Group>
+        <Space h="md" />
         <PluginSelectForm />
-          <Space h="md" />
+        <Space h="md" />
         <Center>
           <Button onClick={close}>Готово</Button>
         </Center>

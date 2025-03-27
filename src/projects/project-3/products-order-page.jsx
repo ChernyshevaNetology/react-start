@@ -7,7 +7,6 @@ import { CustomerInfoForm } from "./forms/customer-info-form";
 import { ProductSelectForm } from "./forms/product-select-form";
 import { PreselectedProductsForm } from "./pre-selected-products";
 import { CustomerConsentForm } from "./forms/customer-consent";
-import { PluginSelectForm } from "./forms/plugin-select-form";
 
 export const ProductsOrderPage = () => {
   const flynaxForm = useFlynaxForm({

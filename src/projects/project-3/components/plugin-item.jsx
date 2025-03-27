@@ -1,7 +1,7 @@
 import React from "react";
-import { Checkbox, Group, Text, Grid } from "@mantine/core";
+import { Checkbox, Text, Grid } from "@mantine/core";
 
-export const PluginItem = ({ price, name }) => {
+export const PluginItem = ({ formKey, idx, form, price, name }) => {
   return (
     <>
       <Grid>
@@ -9,7 +9,10 @@ export const PluginItem = ({ price, name }) => {
           <Text>{name}</Text>
         </Grid.Col>
         <Grid.Col span={1}>
-          <Checkbox />
+          <Checkbox
+            formKey={form.key(`pluginList.${[idx]}.${formKey}`)}
+            {...form.getInputProps(`pluginList.${[idx]}.${formKey}`)}
+          />
         </Grid.Col>
         <Grid.Col offset={1} span={3}>
           <Text>{price} ₽</Text>

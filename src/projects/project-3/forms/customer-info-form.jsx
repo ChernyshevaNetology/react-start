@@ -12,13 +12,14 @@ export const CustomerInfoForm = () => {
       <Divider />
       <Space h="lg" />
       <Stack>
-        {customerDetails.map(({ key, name, toolTipText }, idx) => (
+        {customerDetails.map(({ id, key, name, toolTipText }, idx) => (
           <CustomerFieldItem
+            key={id}
+            formKey={key}
             name={name}
             idx={idx}
             toolTipText={toolTipText}
-            key={form.key(`customerDetails.${[idx]}.${key}`)}
-            {...form.getInputProps(`customerDetails.${[idx]}.${key}`)}
+            form={form}
           />
         ))}
       </Stack>
